@@ -1,0 +1,31 @@
+  
+class Solution {
+  public:
+    int majorityElement(vector<int>& arr) {
+int c=1,candidate=arr[0];
+int n=arr.size();
+       for(int i=1;i<n;i++ ){
+           if(c==0){
+               candidate=arr[i];
+               c=1;
+               
+           }
+           else if(arr[i]==candidate){
+               c++;
+           }
+           else
+           c--;
+           }
+          c=0;
+           for(int n:arr){
+               if(n== candidate){
+                   c++;
+               }
+           }
+           
+           if(c>n/2){
+               return candidate;
+           }
+           else return -1;
+    }
+};
