@@ -1,0 +1,31 @@
+
+class Solution{
+public:
+    int rotationCount(long long R, long long D)
+    {
+
+             int rot=0;
+             while(R>0 || D>0){
+                 
+                 int r=R%10;
+                 int d=D%10;
+                 rot+=min(abs(r-d), 10-(abs(r-d)));
+                 R/=10;
+                 D/=10;
+             }
+             return rot;
+    }
+};
+
+Step-by-Step Solution:
+Let's break down the solution into steps:
+
+Input Format: We will take two long integers R and D as input. These integers represent the initial lock state and the unlock code, respectively.
+
+Digit by Digit Comparison:
+
+For each digit in R and D, calculate the minimum rotations using the formula:
+Forward rotations: abs(a - b)
+Backward rotations: 10 - abs(a - b)
+For each pair of corresponding digits, compute the minimum of the two rotations.
+Return the Total Rotations.
