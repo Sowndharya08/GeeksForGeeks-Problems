@@ -1,0 +1,31 @@
+// Function to return minimum number of jumps to end of array
+
+class Solution {
+  public:
+    int minJumps(vector<int>& arr) {
+        int n=arr.size();
+        if(arr[0]==0){
+            return -1;
+        }
+        
+        int i=n-1;
+        int c=0;
+        while(i>0){
+            int flag=0;
+            for(int j=0;j<i;j++){
+                if(arr[j]+j>=i){
+                    i=j;
+                    flag=1;
+                    break;
+                }
+            }
+            if(flag==0){
+                return -1;
+                
+            }
+            c++;
+        }
+        return c;
+        
+    }
+};
