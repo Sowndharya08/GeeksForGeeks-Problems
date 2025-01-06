@@ -1,0 +1,38 @@
+Complexity Analysis of Floyd Warshall Algorithm:----------------------------------------------------------->
+Time Complexity: O(V3), where V is the number of vertices in the graph and we run three nested loops each of size V
+Auxiliary Space: O(V2), to create a 2-D matrix in order to store the shortest distance for each pair of nodes.
+ 
+
+class Solution {
+public:
+    void shortestDistance(vector<vector<int>>& mat) {
+        // Code here
+        int n=mat.size();
+        
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(mat[i][j]==-1){
+                    mat[i][j]=1e9;
+                }
+                if(i==j) mat[i][j]=0; 
+            }
+        }
+        
+        //applying floyd warsh
+        for(int val=0;val<n;val++){
+            for (int i=0;i<n;i++){
+                for(int j=0;j<n;j++){
+                    mat[i][j]=min(mat[i][j],mat[i][val]+mat[val][j]);
+                }
+            }
+        }
+        
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(mat[i][j]==1e9){
+                    mat[i][j]=-1;
+                }
+            }
+        }
+    }
+};
