@@ -1,18 +1,9 @@
-What is 1e9?
-1e9 is a scientific notation representation of the number 1,000,000,000 (one billion). It is a shorthand way to express large or very small numbers in a compact form. Specifically:
+What is 1e9? USED INSTEAD OF infinity
+1e9 is a scientific notation representation of the number 1,000,000,000 (one billion).
+It is a shorthand way to express large or very small numbers in a compact form. 
 
-1e9 means 
-1
-×
-1
-0
-9
-1×10 
-9
- , which is equivalent to 1,000,000,000.
 Which language uses 1e9?
-The notation 1e9 is commonly used in several programming languages, including:
-
+The notation 1e9 is commonly used in several programming languages
 C++ (which is the language in your code snippet)
 Python
 Java
