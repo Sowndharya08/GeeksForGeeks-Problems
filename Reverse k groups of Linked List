@@ -1,0 +1,63 @@
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+
+    Node(int x) {
+        data = x;
+        next = NULL;
+    }
+};
+
+/* Function to print linked list */
+void printList(Node* node) {
+    while (node != NULL) {
+        printf("%d ", node->data);
+        node = node->next;
+    }
+    printf("\n");
+}
+
+
+// } Driver Code Ends
+/*
+  Node is defined as
+    struct node
+    {
+        int data;
+        struct Node* next;
+
+        Node(int x){
+            data = x;
+            next = NULL;
+        }
+
+    }*head;
+*/
+
+class Solution {
+  public:
+    Node *reverseKGroup(Node *head, int k) {
+                          if(head==NULL) return head;
+                          Node* prevPtr =NULL,*currPtr=head,*nextPtr;
+                          int i=0;
+                          while(currPtr !=NULL && i<k){
+                              nextPtr = currPtr->next;
+                              currPtr->next=prevPtr;
+                              prevPtr = currPtr;
+                              currPtr = nextPtr;
+                              i++;
+                          }
+                          if(currPtr!=NULL){
+                              head->next=reverseKGroup(currPtr,k);
+                          }
+                          return prevPtr;
+    }
+};
