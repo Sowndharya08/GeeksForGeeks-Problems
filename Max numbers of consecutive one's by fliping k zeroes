@@ -1,1 +1,68 @@
+//Explanation Important
 
+arr = {1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1}; 
+k = 2;
+Goal:
+We need to find the maximum subarray length that contains at most 2 zeros, where we can flip up to k = 2 zeros to ones.
+start = 0, end = 0, cnt = 0, res = 0
+
+Iteration Steps:
+
+end = 0: arr[end] = 1, no change in cnt. Window size = end - start + 1 = 1 - 0 + 1 = 1. Update res = 1.
+end = 1: arr[end] = 0, cnt++ = 1. Window size = end - start + 1 = 2 - 0 + 1 = 2. Update res = 2.
+end = 2: arr[end] = 0, cnt++ = 2. Window size = end - start + 1 = 3 - 0 + 1 = 3. Update res = 3.
+end = 3: arr[end] = 1, no change in cnt. Window size = end - start + 1 = 4 - 0 + 1 = 4. Update res = 4.
+end = 4: arr[end] = 1, no change in cnt. Window size = end - start + 1 = 5 - 0 + 1 = 5. Update res = 5.
+end = 5: arr[end] = 0, cnt++ = 3. Now cnt > k = 2, so we need to shrink the window from the left.
+Shrinking the window:
+
+start = 0: arr[start] = 1, no change in cnt. Move start++ = 1.
+start = 1: arr[start] = 0, cnt-- = 2. Move start++ = 2.
+
+At this point, cnt = 2, which is within the allowed limit, so we continue.
+
+Continue sliding the window:
+
+end = 6: arr[end] = 1, no change in cnt. Window size = end - start + 1 = 6 - 2 + 1 = 5.
+end = 7: arr[end] = 0, cnt++ = 3. Now cnt > k = 2, so we shrink the window again.
+Shrinking the window:
+start = 2: arr[start] = 0, cnt-- = 2. Move start++ = 3.
+Continue the process until the end pointer reaches the last element of the array.
+
+Final Result:
+The largest subarray with at most 2 zeros flipped will have a length of 5
+
+Code Output:
+Max length of subarray with at most 2 zeros flipped: 5--------------------------------------------------------------------------------------------------------------------->
+#include <iostream>
+#include<vector>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    int k=2;
+    vector<int> arr(n);
+    for(int i=0;i<n;i++){
+           std::cin >> arr[i];   
+    }
+int st=0,end=0,c=0,res=0;
+while(end<n){
+    if(arr[end]==0){
+        c++;
+    }
+    while(c>k){ 
+        if(arr[st]==0){
+            c--;
+        }
+        st++;
+    }
+    res=max(res,end-st+1);
+    end++;
+    
+}
+cout<<res;
+    
+    
+return 0;
+}
