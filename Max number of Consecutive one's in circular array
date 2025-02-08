@@ -1,0 +1,30 @@
+#include <iostream>
+#include<vector>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    int maxi=0,c=0;
+    vector<int>arr(n);
+    for(int i=0;i<n;i++){
+           cin>> arr[i];   
+        }
+        
+        for(int i=0;i<2*n;i++){
+            int in=i%n;
+            if(arr[in]==0){
+                c=0;
+            }
+            else
+          {
+              c++;
+              maxi=max(maxi,c);
+          }
+           if (i >= n && arr[in] == 0) {
+            break;
+        }
+        }
+        cout<<maxi;
+        return 0;
+}
